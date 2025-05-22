@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 // Funcao de recuperacao de senha
@@ -75,7 +76,9 @@ void recuperar_senha(Cadastro *dados) // Lembre-se, dados é o ponteiro para a i
             printf("Resposta: ");
             fgets(tentativa_resposta, 100, stdin);
             tentativa_resposta[strcspn(tentativa_resposta, "\n")] = '\0';
-            if (strcmp(tentativa_resposta, dados->resposta) == 0)
+            gerar_hash(tentativa_resposta, hash); // Gera o hash da senha, armazenando no vetor "hash" já criado em "prototipos.h"
+
+            if (memcmp(dados->resposta, hash, TAMANHO_HASH) == 0)
             {
                 alterar_senha(dados);
             }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h> // para isdigit
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 int cpf_valido(const char *cpf) // const para garantir q o cpf seja fixo e não alterado.

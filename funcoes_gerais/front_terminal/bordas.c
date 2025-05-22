@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 void bordas()

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 int alterar_senha(Cadastro *dados)
@@ -14,7 +15,8 @@ int alterar_senha(Cadastro *dados)
     fgets(nova_senha, 50, stdin);
     nova_senha[strcspn(nova_senha, "\n")] = '\0'; // Remove o \n
 
-    strcpy(dados->senha, nova_senha); // Atualiza a senha no struct
+    gerar_hash(nova_senha, hash); // Gera o hash da senha, armazenando no vetor "hash" já criado
+    memcpy(dados->senha, hash, TAMANHO_HASH); // Armazena o hash criado na struct, em dados->senha
 
     const char *nome_arquivo = NULL;
     if (dados->menu_principal == '1')

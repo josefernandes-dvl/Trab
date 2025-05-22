@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 // Funcao login_usuario com o ponteiro da instancia dados.
@@ -43,8 +44,9 @@ void login(Cadastro *dados)
                 printf("Senha: ");
                 fgets(tentaiva_senha, 50, stdin);
                 tentaiva_senha[strcspn(tentaiva_senha, "\n")] = '\0';
+                gerar_hash(tentaiva_senha, hash); // Gera o hash da senha, armazenando no vetor "hash" já criado em "prototipos.h"
 
-                if (strcmp(dados->senha, tentaiva_senha) == 0)
+                if (memcmp(dados->senha, hash, TAMANHO_HASH) == 0)
                 {
                     ir_para(25, 15);
                     printf("                                               ");

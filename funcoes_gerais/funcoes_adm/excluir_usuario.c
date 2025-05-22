@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 void excluir_usuario(Cadastro *dados)

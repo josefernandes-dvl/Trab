@@ -1,11 +1,15 @@
 #pragma once
-// ISSO É SÓ A ESTRUTURA!!! A APLICAÇÃO DISSO TA NA MAIN.
+#define TAMANHO_HASH SHA256_DIGEST_LENGTH
+#include <openssl/sha.h>  // Necessário para SHA256_DIGEST_LENGTH
+
+unsigned char hash[TAMANHO_HASH]; // Cria um hash para a criptografia, que será usado e reaproveitado 
+
 typedef struct
 {                       // Definição da struct aq, pois será usada em todas funções. Explicação: se você definir a struct dentro do arquivo de cabeçalho
     char nome[50];      //(.h) e instanciar a variável dessa struct apenas na função main(), tudo será armazenado na main(). O que acontece é que,
     char pergunta[100]; // embora a definição da struct esteja acessível em várias funções (pois você a declarou no .h), você só cria uma instância
     char resposta[100]; // dessa struct na main(), o que significa que os dados ficam armazenados na variável que você criar na main().
-    char senha[50];
+    char senha[TAMANHO_HASH];
     char cpf[12]; // Para CPF sem pontuação
     char email[50];
     char menu_principal; // 1 usuario, 2 adm
@@ -31,6 +35,7 @@ void limpar(void);
 void apaga_buffer(void);
 void limpar_linha(void);
 int cpf_valido(const char *cpf);
+void gerar_hash(const char *senha, unsigned char *hash);
 
 // Prototipos das funcoes binarias
 void inicializar_arquivo(char menu_principal);

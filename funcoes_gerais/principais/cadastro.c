@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 // Funcao login_usuario com o ponteiro da instancia dados.
@@ -40,20 +41,27 @@ void cadastro(Cadastro *dados)
 
     strcpy(dados->nome, tentativa_nome); // Copia a tentiva valida para o nome
 
+    char senha[50];
     ir_para(25, 10);
     printf("Senha: ");
-    fgets(dados->senha, 50, stdin);
-    dados->senha[strcspn(dados->senha, "\n")] = '\0';
+    fgets(senha, 50, stdin);
+    senha[strcspn(senha, "\n")] = '\0';
+    gerar_hash(senha, hash); // Gera o hash da senha, armazenando no vetor "hash" já criado
+    memcpy(dados->senha, hash, TAMANHO_HASH); // Armazena o hash criado na struct, em dados->senha
 
     ir_para(25, 11);
     printf("Pergunta secreta: ");
     fgets(dados->pergunta, 100, stdin);
     dados->pergunta[strcspn(dados->pergunta, "\n")] = '\0';
 
+    char resposta[100];
     ir_para(25, 12);
     printf("Resposta da pergunta secreta: ");
-    fgets(dados->resposta, 100, stdin);
-    dados->resposta[strcspn(dados->resposta, "\n")] = '\0';
+    fgets(resposta, 100, stdin);
+    resposta[strcspn(resposta, "\n")] = '\0';
+    gerar_hash(resposta, hash); // Gera o hash da senha, armazenando no vetor "hash" já criado
+    memcpy(dados->resposta, hash, TAMANHO_HASH); // Armazena o hash criado na struct, em dados->senha
+
 
     if (dados->menu_principal == '1') // Só o usuario q vai ter isso a mais
     {

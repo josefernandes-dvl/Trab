@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <openssl/sha.h>
 #include "prototipos.h"
 
 int verificar_nome(Cadastro *dados, char tentativa_nome[])
