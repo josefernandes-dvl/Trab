@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "name": "Win64",
+      "includePath": [
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/funcoes_gerais",
+        "${workspaceFolder}/funcoes_gerais/binarias",
+        "${workspaceFolder}/funcoes_gerais/front_terminal",
+        "${workspaceFolder}/funcoes_gerais/funcoes_adm",
+        "${workspaceFolder}/funcoes_gerais/principais",
+        "${workspaceFolder}/funcoes_gerais/secundarias",
+        "C:/msys64/mingw64/include",
+        "C:/msys64/usr/include"
+      ],
+      "defines": [],
+      "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-x64"
+    }
+  ],
+  "version": 4,
+  "files.associations": {
+    "*.h": "c"
+  }
+}
