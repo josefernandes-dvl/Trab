@@ -38,7 +38,7 @@ void login(Cadastro *dados)
             do // Repeticao ate a senha ser correta
             {
                 ir_para(6, 11);
-                limpar_linha();   
+                limpar_linha();
                 ir_para(25, 11);
                 printf("Senha: ");
                 fgets(tentaiva_senha, 50, stdin);
@@ -88,7 +88,7 @@ void login(Cadastro *dados)
                                 printf("\033[1;31mTentativa de login mal sucedida.\033[0m");
                                 exit(0);
                             default:
-                                break; 
+                                break;
                             }
                         } while (deseja_recuperar != '1' && deseja_recuperar != '2' && deseja_recuperar != '3');
                     }
